@@ -1,6 +1,6 @@
 [package]
 name = "spread"
-version = "0.0.1"
+version = "0.0.2"
 edition = "2024"
 license = "MIT"
 authors = ["Samuel Colvin <samuel@pydantic.dev>"]
