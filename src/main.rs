@@ -186,6 +186,12 @@ fn run(cli: &Cli) -> Result<()> {
         bind_viewer_keys(cx);
         cx.bind_keys([KeyBinding::new("cmd-o", OpenDocument, None)]);
         cx.bind_keys([KeyBinding::new("cmd-q", CloseFile, None)]);
+        #[cfg(not(target_os = "macos"))]
+        cx.bind_keys([
+            KeyBinding::new("ctrl-o", OpenDocument, None),
+            KeyBinding::new("ctrl-q", CloseFile, None),
+            KeyBinding::new("ctrl-w", CloseFile, None),
+        ]);
         let open_dialog_show_splash_after_document_close =
             Rc::clone(&show_splash_after_document_close);
         let open_dialog_splash_error = Rc::clone(&splash_error);

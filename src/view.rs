@@ -109,6 +109,13 @@ pub(crate) fn bind_viewer_keys(cx: &mut App) {
         KeyBinding::new("shift-left", ExtendLeft, Some("SpreadsheetViewer")),
         KeyBinding::new("shift-right", ExtendRight, Some("SpreadsheetViewer")),
     ]);
+    // On Linux/Windows, cmd maps to Super (Win key); add ctrl equivalents for
+    // the two shortcuts users expect to work with Ctrl.
+    #[cfg(not(target_os = "macos"))]
+    cx.bind_keys([
+        KeyBinding::new("ctrl-c", CopySelection, Some("SpreadsheetViewer")),
+        KeyBinding::new("ctrl-f", OpenSearch, Some("SpreadsheetViewer")),
+    ]);
 }
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
